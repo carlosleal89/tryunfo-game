@@ -30,7 +30,7 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Form
-          cardName={ this.name }
+          cardName={ name }
           cardDescription={ description }
           onInputChange={ this.onInputChange }
         />
