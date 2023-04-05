@@ -44,7 +44,7 @@ class Input extends React.Component {
           <select name="rare-input" id="" data-testid="rare-input">
             <option value="normal">normal</option>
             <option value="raro">raro</option>
-            <option value="muito-raro">muito raro</option>
+            <option value="muito raro">muito raro</option>
           </select>
         </label>
         <label htmlFor="trunfo-input">
