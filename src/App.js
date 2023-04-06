@@ -4,14 +4,14 @@ import Card from './components/Card';
 
 class App extends React.Component {
   state = {
-    name: '',
-    description: '',
-    // attr1: '',
-    // attr2:'',
-    // attr3:'',
-    // image:'',
-    // rarity:'',
-    // isTrunfo: false,
+    cardName: '',
+    cardDescription: '',
+    cardImage: '',
+    cardAttr1: '',
+    cardAttr2: '',
+    cardAttr3: '',
+    cardRare: 'normal',
+    cardTrunfo: false,
   };
 
   onInputChange = ({ target }) => {
@@ -24,17 +24,40 @@ class App extends React.Component {
   };
 
   render() {
-    const { name, description } = this.state;
-    console.log(this);
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
-          cardName={ name }
-          cardDescription={ description }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardImage={ cardImage }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
         />
-        <Card />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardImage={ cardImage }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
       </div>
     );
   }
