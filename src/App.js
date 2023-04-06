@@ -7,12 +7,13 @@ class App extends React.Component {
     cardName: '',
     cardDescription: '',
     cardImage: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
     cardRare: 'normal',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
+    cardsArray: [],
   };
 
   // criar um evento para quando passar o mouse em cima do botão salvar desabilitado, ele mostrar um mensagem informando quais campos faltam preencher
@@ -39,8 +40,6 @@ class App extends React.Component {
     const valMaxAttrVal = (
       (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= MAX_TOTAL_ATTR_VAL)
     );
-    console.log(Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3));
-
     const valInputs = (valCardName && valCardDescription && valCardImage && valCardRare);
     const valAttr = (
       valAttr1 && valAttr2 && valAttr3 && valCardDescription && valMaxAttrVal
@@ -58,10 +57,26 @@ class App extends React.Component {
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    console.log(value);
     this.setState({
       [name]: value,
     }, this.errorHandler);
+  };
+
+  saveButton = () => {
+    const card = this.state;
+
+    this.setState((prevState) => ({
+      cardName: '',
+      cardDescription: '',
+      cardImage: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+      cardsArray: [...prevState.cardsArray, card],
+    }));
   };
 
   render() {
@@ -90,6 +105,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.saveButton }
         />
         <Card
           cardName={ cardName }
