@@ -13,6 +13,7 @@ class App extends React.Component {
     cardRare: 'normal',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
+    hasTrunfo: false,
     cardsArray: [],
   };
 
@@ -50,8 +51,6 @@ class App extends React.Component {
         valInputs && valAttr // se todas const retornarem true, o botão vai ser habilitado( a logica ta invertida pelo ! antes da expressão )
       ),
     });
-
-    // console.log(valCardName, valCardDescription, valCardImage, valCardRare);
   };
 
   onInputChange = ({ target }) => {
@@ -74,6 +73,7 @@ class App extends React.Component {
       cardAttr3: '0',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: card.cardTrunfo,
       isSaveButtonDisabled: true,
       cardsArray: [...prevState.cardsArray, card],
     }));
@@ -89,6 +89,7 @@ class App extends React.Component {
       cardAttr3,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
     return (
@@ -106,6 +107,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.saveButton }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
