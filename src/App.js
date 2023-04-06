@@ -33,7 +33,7 @@ class App extends React.Component {
     const valCardName = cardName.length > 0; // atribui um valor boolean a cada const.
     const valCardDescription = cardDescription.length > 0;
     const valCardImage = cardImage.length > 0;
-    const valCardRare = cardRare !== 'normal';
+    const valCardRare = cardRare.length > 0;
     const valAttr1 = (Number(cardAttr1) >= 0 && Number(cardAttr1) <= MAX_ATTR_VAL);
     const valAttr2 = (Number(cardAttr2) >= 0 && Number(cardAttr2) <= MAX_ATTR_VAL);
     const valAttr3 = (Number(cardAttr3) >= 0 && Number(cardAttr3) <= MAX_ATTR_VAL);
