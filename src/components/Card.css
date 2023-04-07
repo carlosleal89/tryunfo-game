@@ -1,0 +1,11 @@
+.img-class {
+  height: 250px;
+  width: 350px;
+}
+
+.card-section {
+  border: 3px solid white;
+  border-radius: 8px;
+  padding: 10px;
+  width: 400px;
+}

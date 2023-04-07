@@ -1,0 +1,16 @@
+body {
+  background-color: black;
+  color: white;
+  color: #24b9dd;
+  font-family: Arial;
+}
+
+
+
+.preview-card-section {
+  display: flex;
+}
+
+.card-list-section {
+  display: flex;
+}

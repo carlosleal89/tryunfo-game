@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import './Card.css';
 
 class Card extends React.Component {
   render() {
@@ -20,14 +21,22 @@ class Card extends React.Component {
           <br />
           { cardName }
         </p>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <img
+          src={ cardImage }
+          alt={ cardName }
+          className="img-class"
+          data-testid="image-card"
+        />
         <p data-testid="description-card">
           Descrição
           <br />
           { cardDescription }
         </p>
+        Força
         <p data-testid="attr1-card">{ cardAttr1 }</p>
+        Destreza
         <p data-testid="attr2-card">{ cardAttr2 }</p>
+        Agilidade
         <p data-testid="attr3-card">{ cardAttr3 }</p>
         <p data-testid="rare-card">{ cardRare }</p>
         { cardTrunfo === true ? <p data-testid="trunfo-card">Super Trunfo</p> : '' }
