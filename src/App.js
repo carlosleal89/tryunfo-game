@@ -79,6 +79,15 @@ class App extends React.Component {
     }));
   };
 
+  /*deleteButton = (event, index) => {
+    event.preventDefault();
+    const { cardsArray, cardTrunfo } = this.state;
+    cardsArray.splice(index, 1);
+    this.setState({
+      cardsArray,
+    });
+  };*/
+
   render() {
     const {
       cardName,
@@ -130,7 +139,7 @@ class App extends React.Component {
             cardsArray.map((card, index) => (
               <div className="card" key={ index }>
                 <Card
-                  key={ index }
+                  key={ card.cardName }
                   cardName={ card.cardName }
                   cardDescription={ card.cardDescription }
                   cardImage={ card.cardImage }
@@ -140,7 +149,12 @@ class App extends React.Component {
                   cardRare={ card.cardRare }
                   cardTrunfo={ card.cardTrunfo }
                 />
-                <button>Excluir</button>
+                <button
+                  data-testid="delete-button"
+                  onClick={ (event) => this.deleteButton(event, index) }
+                >
+                  Excluir
+                </button>
               </div>
             ))
           }
