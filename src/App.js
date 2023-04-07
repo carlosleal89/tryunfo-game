@@ -121,6 +121,7 @@ class App extends React.Component {
         />
         {
           cardsArray.map((card, index) => (
+            <>
             <Card
               key={ index }
               cardName={ card.cardName }
@@ -132,8 +133,11 @@ class App extends React.Component {
               cardRare={ card.cardRare }
               cardTrunfo={ card.cardTrunfo }
             />
+            <button>Excluir</button>
+            </>
           ))
         }
+
       </div>
     );
   }
