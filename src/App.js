@@ -83,7 +83,7 @@ class App extends React.Component {
     }));
   };
 
-  deleteButton = (event, index) => {
+  deleteButton = (index) => {
     const { cardsArray } = this.state;
     cardsArray.splice(index, 1);
     this.setState({

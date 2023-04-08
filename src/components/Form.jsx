@@ -20,7 +20,7 @@ class Form extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="input-section">
         <label htmlFor="name-input">
           Nome
           <input
