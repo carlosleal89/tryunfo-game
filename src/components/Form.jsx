@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import './Form.css';
 
 class Form extends React.Component {
   render() {
@@ -19,7 +20,7 @@ class Form extends React.Component {
     } = this.props;
 
     return (
-      <section className="input-section">
+      <div>
         <label htmlFor="name-input">
           Nome
           <input
@@ -124,7 +125,7 @@ class Form extends React.Component {
         >
           Salvar
         </button>
-      </section>
+      </div>
     );
   }
 }
