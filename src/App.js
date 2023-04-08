@@ -85,9 +85,10 @@ class App extends React.Component {
 
   deleteButton = (index) => {
     const { cardsArray } = this.state;
-    cardsArray.splice(index, 1);
+    const updateArray = cardsArray;
+    updateArray.splice(index, 1);
     this.setState({
-      cardsArray,
+      cardsArray: updateArray,
       hasTrunfo: cardsArray.some(({ cardTrunfo }) => cardTrunfo),
     });
   };
