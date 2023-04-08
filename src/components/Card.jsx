@@ -17,8 +17,6 @@ class Card extends React.Component {
     return (
       <section className="card-section">
         <p data-testid="name-card">
-          Name
-          <br />
           { cardName }
         </p>
         <img
@@ -28,8 +26,6 @@ class Card extends React.Component {
           data-testid="image-card"
         />
         <p data-testid="description-card">
-          Descrição
-          <br />
           { cardDescription }
         </p>
         Força
