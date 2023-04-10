@@ -86,10 +86,10 @@ class App extends React.Component {
     }));
   };
 
-  deleteButton = (index) => {
+  deleteButton = (name) => {
+    console.log(name);
     const { cardsArray } = this.state;
-    const updateArray = cardsArray;
-    updateArray.splice(index, 1);
+    const updateArray = cardsArray.filter(({ cardName }) => cardName !== name);
     this.setState({
       cardsArray: updateArray,
       hasTrunfo: cardsArray.some(({ cardTrunfo }) => cardTrunfo),
@@ -179,18 +179,14 @@ class App extends React.Component {
           />
         </label>
         {
-          cardsArray.filter((el) => el.cardName.includes(nameFilter))
+          cardsArray
+            .filter((el) => el.cardName.includes(nameFilter))
+            .filter((el) => (trunfoFilter ? el.cardTrunfo : el))
             .filter((el) => {
               if (rareFilter === 'todas') {
                 return el;
               }
               return el.cardRare === rareFilter;
-            })
-            .filter((el) => {
-              if (trunfoFilter) {
-                return el.cardTrunfo;
-              }
-              return el;
             })
             .map((card, index) => (
               <div className="card" key={ index }>
@@ -207,7 +203,7 @@ class App extends React.Component {
                 />
                 <button
                   data-testid="delete-button"
-                  onClick={ () => this.deleteButton(index) }
+                  onClick={ () => this.deleteButton(card.cardName) }
                 >
                   Excluir
                 </button>
