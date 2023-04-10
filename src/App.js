@@ -13,6 +13,7 @@ class App extends React.Component {
     cardAttr3: '0',
     cardRare: 'normal',
     nameFilter: '',
+    rareFilter: 'todas',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
     hasTrunfo: false,
@@ -103,6 +104,7 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       nameFilter,
+      rareFilter,
       cardRare,
       cardTrunfo,
       hasTrunfo,
@@ -138,8 +140,9 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </main>
+        <p>Filtrar</p>
         <label htmlFor="name-filter">
-          Filtrar
+          Nome
           <input
             data-testid="name-filter"
             id="name-filter"
@@ -147,8 +150,28 @@ class App extends React.Component {
             onChange={ this.onInputChange }
           />
         </label>
+        <label htmlFor="rare-filter">
+          Raridade
+          <select
+            name="rareFilter"
+            data-testid="rare-filter"
+            id="rare-filter"
+            onChange={ this.onInputChange }
+          >
+            <option>todas</option>
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
+          </select>
+        </label>
         {
           cardsArray.filter((el) => el.cardName.includes(nameFilter))
+            .filter((el) => {
+              if (rareFilter === 'todas') {
+                return el;
+              }
+              return el.cardRare === rareFilter;
+            })
             .map((card, index) => (
               <div className="card" key={ index }>
                 <Card
