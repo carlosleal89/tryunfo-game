@@ -22,6 +22,7 @@ class App extends React.Component {
   };
 
   // criar um evento para quando passar o mouse em cima do botão salvar desabilitado, ele mostrar um mensagem informando quais campos faltam preencher
+  // criar um erro se botar duas cartas com mesmo nome
   errorHandler = () => {
     const {
       cardName,
@@ -87,7 +88,6 @@ class App extends React.Component {
   };
 
   deleteButton = (name) => {
-    console.log(name);
     const { cardsArray } = this.state;
     const updateArray = cardsArray.filter(({ cardName }) => cardName !== name);
     this.setState({
@@ -180,7 +180,7 @@ class App extends React.Component {
         </label>
         {
           cardsArray
-            .filter((el) => el.cardName.includes(nameFilter))
+            .filter((el) => el.cardName.startsWith(nameFilter))
             .filter((el) => (trunfoFilter ? el.cardTrunfo : el))
             .filter((el) => {
               if (rareFilter === 'todas') {
@@ -188,10 +188,9 @@ class App extends React.Component {
               }
               return el.cardRare === rareFilter;
             })
-            .map((card, index) => (
-              <div className="card" key={ index }>
+            .map((card) => (
+              <div className="card" key={ card.cardName }>
                 <Card
-                  key={ card.cardName }
                   cardName={ card.cardName }
                   cardDescription={ card.cardDescription }
                   cardImage={ card.cardImage }
